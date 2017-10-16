@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Confidence__c</fullName>
+        <description>The confidence score returned from the geocoding service for this result</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The confidence score returned from the geocoding service for this result</inlineHelpText>
+        <label>Confidence</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Geocoding Results</relationshipLabel>
+        <relationshipName>Geocoding_Results</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Geocoded_Address__c</fullName>
+        <description>The address the geocoder used for this result</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The address the geocoder used for this result</inlineHelpText>
+        <label>Geocoded Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Geocoding_Service__c</fullName>
+        <description>The name of the service that provided this result</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the service that provided this result</inlineHelpText>
+        <label>Geocoding Service</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Link_to_Record__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/&apos; &amp; Related_Record_Id__c, Related_Record_Id__c)</formula>
+        <label>Link to Record</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <required>false</required>
+        <scale>8</scale>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Related_Record_Id__c</fullName>
+        <description>The Id of the record whose address was requested for geocoding</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Id of the record whose address was requested for geocoding</inlineHelpText>
+        <label>Related Record Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Address__c</fullName>
+        <description>The address sent to the service for geocoding.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The address sent to the service for geocoding</inlineHelpText>
+        <label>Requested Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Score__c</fullName>
+        <description>The score that determines which result is the winning result. May match confidence score from the geocoding service, or be adjusted by our own algorithm if the confidence is inaccurate.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The score that determines which result is the winning result. May match confidence score from the geocoding service, or be adjusted by our own algorithm if the confidence is inaccurate.</inlineHelpText>
+        <label>Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scoring_Method__c</fullName>
+        <description>Describes the calculation used to determine this score</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describes the calculation used to determine this score</inlineHelpText>
+        <label>Scoring Method</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CreatedDate)</formula>
+        <label>Timestamp</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Winning_Result__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This box will be checked if this is the result that was used to determine the record location</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This box will be checked if this is the result that was used to determine the record location</inlineHelpText>
+        <label>Winning Result</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Geocoding Result</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Requested_Address__c</columns>
+        <columns>Geocoded_Address__c</columns>
+        <columns>Winning_Result__c</columns>
+        <columns>Confidence__c</columns>
+        <columns>Score__c</columns>
+        <columns>Scoring_Method__c</columns>
+        <columns>Link_to_Record__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>GEO-{00000}</displayFormat>
+        <label>Geocoding Response Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Geocoding Results</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Link_to_Record__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Geocoded_Address__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Requested_Address__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Winning_Result__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Confidence__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Score__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Scoring_Method__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

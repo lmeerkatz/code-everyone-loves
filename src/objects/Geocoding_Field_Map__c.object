@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Maps typical address fields to specific SObject fields to support geolocation</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>City_Field__c</fullName>
+        <description>The name of the city field for this address mapping</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the city field for this address mapping</inlineHelpText>
+        <label>City Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country_Field__c</fullName>
+        <description>The name of the country field for this address mapping</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the country field for this address mapping</inlineHelpText>
+        <label>Country Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Latitude_Field__c</fullName>
+        <description>The name of the latitude field for this address mapping</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the latitude field for this address mapping</inlineHelpText>
+        <label>Latitude Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Longitude_Field__c</fullName>
+        <description>The name of the longitude field for this address mapping</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the longitude field for this address mapping</inlineHelpText>
+        <label>Longitude Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Postal_Code_Field__c</fullName>
+        <description>The name of the zip/postal code field for this address mapping</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the zip/postal code field for this address mapping</inlineHelpText>
+        <label>Postal Code Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SObject_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the SObject for this address map</inlineHelpText>
+        <label>SObject Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_Field__c</fullName>
+        <description>The name of the state field for this address mapping</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the state field for this address mapping</inlineHelpText>
+        <label>State Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Street_Field__c</fullName>
+        <description>The name of the street field for this SObject address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the street field for this SObject address</inlineHelpText>
+        <label>Street Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Geocoding Field Map</label>
+    <visibility>Protected</visibility>
+</CustomObject>

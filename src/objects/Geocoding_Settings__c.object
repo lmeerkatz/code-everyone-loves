@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_Key__c</fullName>
+        <externalId>false</externalId>
+        <label>API Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>App_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>App Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Class__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The Salesforce class responsible for calling the web service.</inlineHelpText>
+        <label>Class</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Endpoint__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The base endpoint for the geolocation service.</inlineHelpText>
+        <label>Endpoint</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Results__c</fullName>
+        <description>The maximum number of results to return when an address is geocoded.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The maximum number of results to return when an address is geocoded.</inlineHelpText>
+        <label>Maximum Results</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Save_Geocoding_Results__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If this is checked, individual Geocoding Results will be saved when records are geocoded.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If this is checked, individual Geocoding Results will be saved when records are geocoded.</inlineHelpText>
+        <label>Save Geocoding Results</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Timeout_Seconds__c</fullName>
+        <defaultValue>20</defaultValue>
+        <description>The timeout in seconds for this service.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The timeout in seconds for this service.</inlineHelpText>
+        <label>Timeout (Seconds)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Geocoding Settings</label>
+    <visibility>Protected</visibility>
+</CustomObject>
