@@ -1,6 +1,7 @@
 /**
+* Copyright (c) 2017, Salesforce.org
 * @author Laura Meerkatz
-* @date 10/12/2017
+* @date 2017
 * @description Geocoder implementation for HERE.com API
 */
 public with sharing class GEO_HereGeocoder implements GEO_IGeocoder {

@@ -1,3 +1,9 @@
+/**
+* Copyright (c) 2017, Salesforce.org
+* @author Laura Meerkatz
+* @date 2017
+* @description Data structure for geocoding addresses
+*/
 public class GEO_Address {
     public String street;
     public String city;

@@ -1,6 +1,7 @@
 /**
+* Copyright (c) 2017, Salesforce.org
 * @author Laura Meerkatz
-* @date 12/28/2016
+* @date 2017
 * @description Support methods for geocoding. All logic that isn't specific to the geocoding service being used.
 */
 public with sharing class GEO_GeocodingHelper {

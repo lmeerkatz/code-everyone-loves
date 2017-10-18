@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Weights used to score recommendations for VFx</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Class_Name__c</fullName>
+        <description>The name of the class that uses this weight, like VFx_RecommendationsVolunteerActivities.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the class that uses this weight, like VFx_RecommendationsVolunteerActivities.</inlineHelpText>
+        <label>Class Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <description>The human-readable description of why this weight was applied, like &quot;Activity is within the next two days.&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The human-readable description of why this weight was applied, like &quot;Activity is within the next two days.&quot;</inlineHelpText>
+        <label>Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Score__c</fullName>
+        <description>The points that should be added for this result if the criteria are met.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The points that should be added for this result if the criteria are met.</inlineHelpText>
+        <label>Score</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Recommendation Factors</label>
+    <visibility>Public</visibility>
+</CustomObject>

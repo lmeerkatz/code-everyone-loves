@@ -1,3 +1,9 @@
+/**
+* Copyright (c) 2017, Salesforce.org
+* @author Laura Meerkatz
+* @date 2017
+* @description Data structure for data returned from HERE.com API
+*/
 public with sharing class GEO_HereData {
 
     // Custom data types for response data

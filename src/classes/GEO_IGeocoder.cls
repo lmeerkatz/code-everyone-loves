@@ -1,6 +1,7 @@
 /**
+* Copyright (c) 2017, Salesforce.org
 * @author Laura Meerkatz
-* @date 12/28/2016
+* @date 2017
 * @description Interface for geocoding services. Classes that implement this interface can be called by GEO_Geocoder.
 */
 public interface GEO_IGeocoder {
