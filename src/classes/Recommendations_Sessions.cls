@@ -26,7 +26,7 @@ public with sharing class Recommendations_Sessions extends Recommendations {
 
         Recommendations.Result result = new Recommendations.Result();
 
-        List<Session__c> eligibleSessions = Recommendations_SessionDemoData.getSessionsEligibleForRecommendations();
+        List<Session__c> eligibleSessions = Recommendations_SessionDemoData.getSessionsEligibleForRecommendationsStored();
         List<SessionWrapper> sessionsWithDistance = wrapResults(eligibleSessions);
 
         List<Recommendation> recommendations = new List<Recommendation>();
@@ -138,7 +138,7 @@ public with sharing class Recommendations_Sessions extends Recommendations {
 
     private static Contact getContactDetails(Id contactId) {
         return [
-            SELECT Id, Name
+            SELECT Id, Name, Preferred_Topics__c, Preferred_Roles__c, Preferred_Levels__c
             FROM Contact
             WHERE Id = :contactId
             LIMIT 1
