@@ -12,18 +12,27 @@ public with sharing class Recommendations_SessionDemoData {
 
     /********************** NOT GREAT **********************/
 
-    // TODO: replace formula field with the equivalent hard-coded criteria
+    // Criteria:
+    // - Session is in the future
+    // - Session isn't full
+    // - Session has a topic
+    // - Name doesn't include 'private' or 'executive track'
     public static List<Session__c> getSessionsEligibleForRecommendationsHardCoded() {
         return [
-            SELECT Id, Name, Location__c,
-                Number_of_Attendees__c, Maximum_Attendees__c
+            SELECT Id, Name, Location__c, Location__Latitude__s, Location__Longitude__s,
+                Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c
             FROM Session__c
-            WHERE Include_in_Recommendations__c = true
+            WHERE Session_Date__c >= TODAY AND
+                (Maximum_Attendees__c = null OR
+                    (Open_Slots__c != null AND Open_Slots__c > 0)) // <- this required creating a formula field
+                    // because we can't compare two fields in a query
+                AND Topics__c != null
+                AND Name != '%private%'
+                AND Name != '%executive track%'
             ORDER BY CreatedDate DESC
             LIMIT 200
         ];
     }
-
 
     /********************** BETTER **********************/
 
@@ -31,8 +40,8 @@ public with sharing class Recommendations_SessionDemoData {
     // in a production scenario this should also be abstracted out
     public static List<Session__c> getSessionsEligibleForRecommendationsFormula() {
         return [
-            SELECT Id, Name, Location__c,
-                Number_of_Attendees__c, Maximum_Attendees__c
+            SELECT Id, Name, Location__c, Location__Latitude__s, Location__Longitude__s,
+                Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c
             FROM Session__c
             WHERE Include_in_Recommendations__c = true
             ORDER BY CreatedDate DESC
@@ -40,15 +49,15 @@ public with sharing class Recommendations_SessionDemoData {
         ];
     }
 
-
     /********************** BEST **********************/
 
     // returns a list of eligible sessions
     // in a production scenario this should also be abstracted out
     public static List<Session__c> getSessionsEligibleForRecommendationsStored() {
         return [
-            SELECT Id, Name, Location__c,
-                Number_of_Attendees__c, Maximum_Attendees__c
+            SELECT Id, Name, Location__c, Location__Latitude__s, Location__Longitude__s,
+                Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c,
+                Topics__c, Roles__c, Levels__c
             FROM Session__c
             WHERE Include_in_Recommendations_Stored__c = true
             ORDER BY CreatedDate DESC

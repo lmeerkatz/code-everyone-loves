@@ -11,7 +11,7 @@ public with sharing class Recommendations_Sessions extends Recommendations {
     private Contact contact { get; set; }
 
     public Recommendations_Sessions() {
-        super();
+        super('Recommendations_Sessions');
     }
 
     @AuraEnabled
@@ -52,7 +52,7 @@ public with sharing class Recommendations_Sessions extends Recommendations {
     public override Boolean hasFactor(Recommendation_Factor__c factor, SObject record) {
         if (factor.Name == 'popular') {
             return hasFactorPopular((Session__c)record);
-        } else if (factor.Name.startsWith('next')) {
+        } else if (factor.Name.startsWith('dateNext')) {
             return hasFactorNextNDays(parseNumberOfDays(factor.Name), (Session__c)record);
         } else if (factor.Name == 'topic') {
             return hasFactorPreferredTopic((Session__c)record);
@@ -156,9 +156,9 @@ public with sharing class Recommendations_Sessions extends Recommendations {
     }
 
     private Integer parseNumberOfDays(String daysString) {
-        String value = daysString.replaceAll('next', '').replaceAll('days', '');
+        String value = daysString.replaceAll('dateNext', '').replaceAll('Days', '');
         try {
-            return Integer.valueOf(daysString);
+            return Integer.valueOf(value);
         } catch (TypeException te) {
             throw new RecommendationsException('Can\'t parse days from factor ' + daysString);
         }
