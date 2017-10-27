@@ -15,8 +15,17 @@ public with sharing class Recommendations_Sessions extends Recommendations {
     }
 
     @AuraEnabled
-    public static Recommendations.Result getRecommendations(Id contactId) {
-        return getContactRecommendations(contactId, null);
+    public static Recommendations.Result getRecommendations(Id contactId, Boolean useLocation) {
+        if (useLocation) {
+            Contact c =
+                [ SELECT Id, Location__Latitude__s, Location__Longitude__s
+                    FROM Contact
+                    WHERE Id = :contactId ];
+            Location loc = Location.newInstance(c.Location__Latitude__s, c.Location__Longitude__s);
+            return getContactRecommendations(contactId, loc);
+        } else {
+            return getContactRecommendations(contactId, null);
+        }
     }
 
     @TestVisible

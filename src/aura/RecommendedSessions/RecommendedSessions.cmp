@@ -3,6 +3,7 @@
     <aura:attribute name="contact" type="Contact" />
     <aura:attribute name="sessionList" type="Object[]" />
     <aura:attribute name="searchCriteria" type="String"/>
+    <aura:attribute name="useLocation" type="Boolean"/>
     
     <force:recordData aura:id="service"
                       recordId="{!v.recordId}"
@@ -27,6 +28,12 @@
                                 <lightning:outputField fieldName="Levels__c" />
                                 <lightning:outputField fieldName="Topics__c" />
                             </lightning:recordViewForm>
+                            <aura:if isTrue="{!v.useLocation}">
+                                <div class="slds-size--1-of-1">
+                                    <span class="slds-form-element__label">Distance</span>
+                                </div>
+                                <div class="slds-size--1-of-1 slds-form-element__control"><span class="slds-form-element__static">{!session.distance}</span></div>
+                            </aura:if>
                             <div class="slds-size--1-of-1">
                                 <span class="slds-form-element__label">Recommendation Score</span>
                             </div>

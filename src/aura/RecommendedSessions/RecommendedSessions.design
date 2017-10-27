@@ -1,0 +1,4 @@
+<design:component>
+  <design:attribute name="useLocation" label="Use Location" default="true"
+    description="Check this box if the contact's location should be considered a factor in making recommendations." />
+</design:component>
