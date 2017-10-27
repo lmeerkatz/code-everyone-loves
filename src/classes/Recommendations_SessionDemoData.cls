@@ -20,7 +20,8 @@ public with sharing class Recommendations_SessionDemoData {
     public static List<Session__c> getSessionsEligibleForRecommendationsHardCoded() {
         return [
             SELECT Id, Name, Location__c, Location__Latitude__s, Location__Longitude__s,
-                Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c
+                Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c,
+                Topics__c, Roles__c, Levels__c, Description__c
             FROM Session__c
             WHERE Session_Date__c >= TODAY AND
                 (Maximum_Attendees__c = null OR
@@ -41,7 +42,8 @@ public with sharing class Recommendations_SessionDemoData {
     public static List<Session__c> getSessionsEligibleForRecommendationsFormula() {
         return [
             SELECT Id, Name, Location__c, Location__Latitude__s, Location__Longitude__s,
-                Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c
+                Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c,
+                Topics__c, Roles__c, Levels__c, Description__c
             FROM Session__c
             WHERE Include_in_Recommendations__c = true
             ORDER BY CreatedDate DESC
@@ -57,7 +59,7 @@ public with sharing class Recommendations_SessionDemoData {
         return [
             SELECT Id, Name, Location__c, Location__Latitude__s, Location__Longitude__s,
                 Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c,
-                Topics__c, Roles__c, Levels__c
+                Topics__c, Roles__c, Levels__c, Description__c
             FROM Session__c
             WHERE Include_in_Recommendations_Stored__c = true
             ORDER BY CreatedDate DESC

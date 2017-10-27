@@ -48,7 +48,7 @@
     <enableChangeDataCapture>false</enableChangeDataCapture>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -60,6 +60,34 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Include_in_Recommendations_Stored__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is a copy of the Include in Recommendations formula field that is populated on a nightly schedule. Using this field instead of the formula field in queries improves performance significantly.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is a copy of the Include in Recommendations formula field that is populated on a nightly schedule. Using this field instead of the formula field in queries improves performance significantly.</inlineHelpText>
+        <label>Include in Recommendations Stored</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Include_in_Recommendations__c</fullName>
+        <externalId>false</externalId>
+        <formula>Session_Date__c &gt; NOW() &amp;&amp; 
+(ISBLANK(Maximum_Attendees__c) || Maximum_Attendees__c &gt; Number_of_Attendees__c ) &amp;&amp;
+!ISBLANK(Topics__c) &amp;&amp;
+!CONTAINS(Name, &apos;private&apos;) &amp;&amp;
+!CONTAINS(Name, &apos;executive track&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Criteria:
+ - Session is in the future
+ - Session isn&apos;t full
+ - Session has a topic
+ - Name doesn&apos;t include &apos;private&apos; or &apos;executive track&apos;</inlineHelpText>
+        <label>Include in Recommendations</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Level__c</fullName>
@@ -91,12 +119,97 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Levels__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Levels this session is appropriate for.</inlineHelpText>
+        <label>Levels</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Levels</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <required>false</required>
+        <scale>6</scale>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Attendees__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Attendees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Attendees__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Attendees</label>
+        <summaryForeignKey>Attendee__c.Session__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Open_Slots__c</fullName>
+        <externalId>false</externalId>
+        <formula>Maximum_Attendees__c - Number_of_Attendees__c</formula>
+        <inlineHelpText>Formula: Maximum Attendees minus Number of Attendees</inlineHelpText>
+        <label>Open Slots</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Roles__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Roles this session is appropriate for.</inlineHelpText>
+        <label>Roles</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Roles</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Session_Date__c</fullName>
         <externalId>false</externalId>
         <label>Session Date</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Topics__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Topics is this session covers.</inlineHelpText>
+        <label>Topics</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Topics</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
     </fields>
     <label>Session</label>
     <listViews>
