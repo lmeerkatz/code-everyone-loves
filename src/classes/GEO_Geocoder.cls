@@ -119,28 +119,39 @@ public with sharing class GEO_Geocoder {
     }
 
     /**
-    * @description @Future method for calling geocodeRecords()
-    * @param recordIds A list of Ids of the records to be updated.
-    * @return void
-    */
-    @future(callout=true)
-    public static void geocodeRecordsFuture(List<Id> recordIds){
-        GEO_Geocoder geocoder = new GEO_Geocoder();
-        try {
-            geocoder.geocodeRecords(recordIds);
-        } catch (GEO_Geocoder.GeocodingException ex) {
-            // TODO: log error
-        }
-    }
-
-    /**
-    * @description @Invocable method for calling geocodeRecords()
+    * @description @Invocable method for calling geocodeRecords(), uses Queueable interface
     * @param recordIds A list of Ids of the records to be updated.
     * @return void
     */
     @InvocableMethod(label='Geocode Records' description='Requests geocoding data and updates the records.')
     public static void geocodeRecordsInvocable(List<Id> recordIds) {
-        geocodeRecordsFuture(recordIds);
+        geocodeRecordsQueueable geoJob = new geocodeRecordsQueueable(recordIds);
+        Id jobId = System.enqueueJob(geoJob);
+    }
+
+
+    /**
+    * @description @queueable method for calling geocodeRecords()
+    * @param recordIds A list of Ids of the records to be updated.
+    * @return void
+    */
+    public class geocodeRecordsQueueable implements Queueable, Database.AllowsCallouts{
+        private List<Id> recordIds; 
+        private GEO_Geocoder geocoder;
+
+        public geocodeRecordsQueueable(List<Id> recordIds){
+            this.recordIds = recordIds;
+            this.geocoder = new GEO_Geocoder();
+        }
+
+        public void execute(QueueableContext context){
+            try {
+                geocoder.geocodeRecords(recordIds);
+            } catch (GEO_Geocoder.GeocodingException ex) {
+                // TODO: log error
+            }
+        }
+        
     }
 
     public class GeocodingException extends Exception {}
