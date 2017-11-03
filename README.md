@@ -44,3 +44,5 @@ Note: You may run into performance issues with either version. You can copy the 
 
 Using a custom setting to track factors used in [scoring recommendations](https://github.com/lmeerkatz/df17-event-mgmt/blob/master/src/classes/Recommendations_Sessions.cls#L52) gives us a flexible way for admins to change the weights of each factor.
 
+![Screenshot of Recommendation Factor custom settings](https://github.com/lmeerkatz/df17-event-mgmt/blob/master/screenshots/recommendation-factor-custom-setting.png)
+
