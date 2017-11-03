@@ -39,3 +39,8 @@ Here are two queries that do the same thing:
 Which one would you rather work with? If you wanted to add another filter to strings that shouldn't be included in the name, which version would more easily allow you to make that change?
 
 Note: You may run into performance issues with either version. You can copy the formula field to a non-formula field using a scheduled batch, then request a custom index on the field for the best performance.
+
+## Use custom settings or custom metadata types for variables an admin should be able to control in backend logic
+
+Using a custom setting to track factors used in [scoring recommendations](https://github.com/lmeerkatz/df17-event-mgmt/blob/master/src/classes/Recommendations_Sessions.cls#L52) gives us a flexible way for admins to change the weights of each factor.
+
