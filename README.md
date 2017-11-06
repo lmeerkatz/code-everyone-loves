@@ -8,6 +8,9 @@ The session covers 4 ways to change how your code works without changing your co
 * Use object-oriented programming patterns to solve problems in a reusable way
 * Use dynamic Apex to apply the same solution to multiple sObjects
 
+Resources:
+[Trailmix: Mix Everyone Loves](https://bit.ly/mix-everyone-loves) 
+
 Following are summaries of each concept.
 
 ## Use formula fields to capture complex attributes
