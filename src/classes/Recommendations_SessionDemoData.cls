@@ -45,7 +45,7 @@ public with sharing class Recommendations_SessionDemoData {
                 Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c,
                 Topics__c, Roles__c, Levels__c, Description__c
             FROM Session__c
-            WHERE Include_in_Recommendations__c = true
+            WHERE Include_in_Recommendations__c = true // formula field - to revise the criteria edit the formula
             ORDER BY CreatedDate DESC
             LIMIT 200
         ];
@@ -61,7 +61,7 @@ public with sharing class Recommendations_SessionDemoData {
                 Number_of_Attendees__c, Maximum_Attendees__c, Session_Date__c,
                 Topics__c, Roles__c, Levels__c, Description__c
             FROM Session__c
-            WHERE Include_in_Recommendations_Stored__c = true
+            WHERE Include_in_Recommendations_Stored__c = true // copy of Include_in_Recommendations__c formula field for query performance
             ORDER BY CreatedDate DESC
             LIMIT 200
         ];
