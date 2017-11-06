@@ -59,6 +59,9 @@ public with sharing class GEO_GeocodingHelper {
             addr = new GEO_Address();
             addr.recordId = record.Id;
 
+            // Contact -> (String)record.get('MailingStreet');
+            // Session__c -> (String)record.get('Street__c');
+
             if (fieldMap.get('Street_Field__c') != null) {
                 addr.street = (String)record.get(fieldMap.Street_Field__c);
             }
