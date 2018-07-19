@@ -138,6 +138,10 @@ public with sharing class GEO_GeocodingHelper {
         return records.values();
     }
 
+    public static Credential__c getCredential(Geocoding_Settings__c setting) {
+        return Credentials.getCredentialByName(setting.Credential_Name__c);
+    }
+
     // sObjectName => field map setting
     @TestVisible
     private static Map<String, Geocoding_Field_Map__c> fieldMapSettings {
