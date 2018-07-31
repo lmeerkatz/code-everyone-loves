@@ -8,9 +8,24 @@
     });
 
     action.setCallback(this, function (response) {
-      var recs = response.getReturnValue().recommendations;
-      component.set("v.sessionList", recs.slice(0, 3));
-      console.log(recs);
+      var state = response.getState();
+      if (state === "SUCCESS") {
+        var value = JSON.parse(response.getReturnValue());;
+        var recs = value.recommendations;
+        component.set("v.sessionList", recs.slice(0, 3));
+      } else if (state === "INCOMPLETE") {
+        console.log(state);
+      } else if (state === "ERROR") {
+        var errors = response.getError();
+        if (errors) {
+          if (errors[0] && errors[0].message) {
+            console.log("Error message: " +
+              errors[0].message);
+          }
+        } else {
+          console.log("Unknown error");
+        }
+      }
     });
     $A.enqueueAction(action);
   }
