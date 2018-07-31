@@ -15,7 +15,7 @@ public with sharing class Credentials {
                 credentials = new Map<String, Credential__c>();
                 // if this were production code, you'd want an FLS check here
                 for (Credential__c credential : ([
-                    SELECT Id, Name, API_Key__c, Endpoint__c
+                    SELECT Id, Name, API_Key__c, App_Code__c, Endpoint__c
                     FROM Credential__c
                 ])) {
                     credentials.put(credential.Name, credential);
