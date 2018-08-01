@@ -13,9 +13,7 @@ public with sharing class GEO_HereGeocoder implements GEO_IGeocoder {
         if (settings == null) {
             throw new GEO_Geocoder.GeocodingException('Geocoding Settings have not been set.');
         } else if (settings.Class__c == null ||
-            settings.API_Key__c == null ||
-            settings.App_Code__c == null ||
-            settings.Endpoint__c == null) {
+            settings.Credential_Name__c == null) {
             throw new GEO_Geocoder.GeocodingException('Required fields are missing from Geocoding Settings.');
         } else if (settings.Class__c != 'GEO_HereGeocoder') {
             throw new GEO_Geocoder.GeocodingException(
@@ -60,7 +58,6 @@ public with sharing class GEO_HereGeocoder implements GEO_IGeocoder {
         List<Geocoding_Result__c> results = new List<Geocoding_Result__c>();
 
         if (!response.Response.View.isEmpty()) {
-            System.debug('response.Response.View.size(): ' + response.Response.View.size());
             for (GEO_HereData.Result apiResult : response.Response.View[0].Result) {
                 results.add(new Geocoding_Result__c(
                     Geocoding_Service__c = this.getServiceName(),
@@ -73,13 +70,6 @@ public with sharing class GEO_HereGeocoder implements GEO_IGeocoder {
                     Score__c = apiResult.Relevance,
                     Scoring_Method__c = 'Using Relevance provided by HERE.com'
                 ));
-                System.debug('Relevance: ' + apiResult.Relevance);
-                System.debug('MatchLevel: ' + apiResult.MatchLevel);
-                System.debug('MatchQuality: ' + apiResult.MatchQuality);
-                System.debug('MatchType: ' + apiResult.MatchType);
-                System.debug('Latitude: ' + apiResult.Location.DisplayPosition.Latitude);
-                System.debug('Longitude: ' + apiResult.Location.DisplayPosition.Latitude);
-
             }
         }
 
@@ -136,9 +126,11 @@ public with sharing class GEO_HereGeocoder implements GEO_IGeocoder {
     private String callHereDotCom(String query) {
         HttpRequest http = new HttpRequest();
 
-        http.setEndpoint(settings.Endpoint__c +
-            '?app_id=' + settings.API_Key__c +
-            '&app_code=' + settings.App_Code__c +
+        Credential__c credential = GEO_GeocodingHelper.getCredential(settings);
+
+        http.setEndpoint(credential.Endpoint__c +
+            '?app_id=' + credential.API_Key__c +
+            '&app_code=' + credential.App_Code__c +
             query);
 
         http.setMethod('GET');

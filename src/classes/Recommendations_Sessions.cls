@@ -15,16 +15,18 @@ public with sharing class Recommendations_Sessions extends Recommendations {
     }
 
     @AuraEnabled
-    public static Recommendations.Result getRecommendations(Id contactId, Boolean useLocation) {
-        if (useLocation) {
+    public static String getRecommendations(Id contactId, Boolean useLocation) {
+        if (useLocation != null && useLocation) {
             Contact c =
-                [ SELECT Id, Location__Latitude__s, Location__Longitude__s
+                [ SELECT Id, Mailing_Location__Latitude__s, Mailing_Location__Longitude__s
                     FROM Contact
                     WHERE Id = :contactId ];
-            Location loc = Location.newInstance(c.Location__Latitude__s, c.Location__Longitude__s);
-            return getContactRecommendations(contactId, loc);
+            Location loc = Location.newInstance(c.Mailing_Location__Latitude__s, c.Mailing_Location__Longitude__s);
+            Recommendations.Result result = getContactRecommendations(contactId, loc);
+            return JSON.serialize(result);
         } else {
-            return getContactRecommendations(contactId, null);
+            Recommendations.Result result = getContactRecommendations(contactId, null);
+            return JSON.serialize(result);
         }
     }
 
@@ -93,10 +95,13 @@ public with sharing class Recommendations_Sessions extends Recommendations {
     }
 
     private Boolean hasFactorDistanceWithinNMiles(Decimal numberOfMiles, Session__c session) {
-        if (session.Location__c == null || contact.Mailing_Location__c == null) {
+        if (session.Location__Latitude__s == null || contact.Mailing_Location__Latitude__s == null) {
             return false;
+
         } else {
-            return Location.getDistance(session.Location__c, contact.Mailing_Location__c, 'mi') <= numberOfMiles;
+            Location contactLoc = Location.newInstance(contact.Mailing_Location__Latitude__s, contact.Mailing_Location__Longitude__s);
+            Location sessionLoc = Location.newInstance(session.Location__Latitude__s, session.Location__Longitude__s);
+            return Location.getDistance(sessionLoc, contactLoc, 'mi') <= numberOfMiles;
         }
     }
 
@@ -147,7 +152,8 @@ public with sharing class Recommendations_Sessions extends Recommendations {
 
     private static Contact getContactDetails(Id contactId) {
         return [
-            SELECT Id, Name, Preferred_Topics__c, Preferred_Roles__c, Preferred_Levels__c
+            SELECT Id, Name, Preferred_Topics__c, Preferred_Roles__c, Preferred_Levels__c,
+            Mailing_Location__Latitude__s, Mailing_Location__Longitude__s
             FROM Contact
             WHERE Id = :contactId
             LIMIT 1

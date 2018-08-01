@@ -13,7 +13,7 @@ public with sharing class GEO_Geocoder {
                 // if we're missing key settings, we can't geocode
                 if (settings == null) {
                     throw new GeocodingException('Geocoding Settings are missing');
-                } else if (settings.Class__c == null || settings.API_Key__c == null || settings.Endpoint__c == null) {
+                } else if (settings.Class__c == null || settings.Credential_Name__c == null) {
                     throw new GeocodingException('Geocoding Settings are incomplete');
                 }
 
