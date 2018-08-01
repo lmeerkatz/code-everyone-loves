@@ -1,4 +1,4 @@
-This repository holds demo code for Code Everyone Loves, a session at Dreamforce 2017 designed to help developers think about how to build flexibility into their code.
+This repository holds demo code for Code Everyone Loves, a talk designed to help developers think about how to build flexibility into their code.
 
 The code is derived from real code used to power [Volunteerforce](https://www.salesforce.com/blog/2017/11/app-helps-salesforce-employees-change-the-world.html), the employee engagement app Salesforce employees use to give back to organizations they care about. We've taken functionality used for recommending volunteer activities based on employee interests and used them to develop a component to recommend sessions for the Conference Management demo app from Trailhead. 
 
